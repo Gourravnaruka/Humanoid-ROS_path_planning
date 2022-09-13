@@ -22,7 +22,7 @@ E.g ( self.bot_pathplanner.find_path_nd_display(self.bot_mapper.Graph.graph, sta
 2) self.img_shortest_path => Found path Overlayed (In Color) on Image
 
 Author :
-Haider Abbasi
+Gourav Naruka
 
 Date :
 6/04/22
