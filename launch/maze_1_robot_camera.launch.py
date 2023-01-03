@@ -16,7 +16,7 @@ def generate_launch_description():
         "GAZEBO_PLUGIN_PATH": plugin_path,
         "GAZEBO_RESOURCE_PATH": media_path,
     }
-    return LaunchDescription(
+    
         [
             ExecuteProcess(
                 cmd=["gazebo","--verbose",world_file,"-s","libgazebo_ros_factory.so",],
