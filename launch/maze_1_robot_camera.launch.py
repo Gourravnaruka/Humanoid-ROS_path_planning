@@ -24,7 +24,7 @@ def generate_launch_description():
                 additional_env=env,
             ),
             Node(
-                package="robot_state_publisher",
+                package="",
                 executable="robot_state_publisher",
                 output="screen",
                 arguments=[urdf_file],
