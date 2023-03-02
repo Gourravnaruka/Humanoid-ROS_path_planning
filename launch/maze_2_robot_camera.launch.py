@@ -7,7 +7,7 @@ from scripts import GazeboRosPaths
 
 def generate_launch_description():
     package_share_dir = get_package_share_directory("maze_bot")
-    urdf_file = os.path.join(package_share_dir, "urdf", "maze_bot.urdf")
+    urdf_file = os.path.join(package_share_dir, "urdf", "maze_bot_lidar.urdf")  # Change the URDF file to one that includes a LIDAR sensor
     world_file = os.path.join(package_share_dir, "worlds", "maze_2.world")
 
     model_path, plugin_path, media_path = GazeboRosPaths.get_paths()
@@ -28,6 +28,28 @@ def generate_launch_description():
                 executable="robot_state_publisher",
                 output="screen",
                 arguments=[urdf_file],
+            ),
+            Node(
+                package="gazebo_ros",
+                executable="spawn_entity.py",
+                arguments=[
+                    "-entity", "maze_bot",
+                    "-file", urdf_file,
+                    "-x", "0",
+                    "-y", "0",
+                    "-z", "0.2",
+                    "-R", "0",
+                    "-P", "0",
+                    "-Y", "0",
+                ],
+                output="screen",
+            ),
+            Node(
+                package="gazebo_ros",
+                executable="lidar",
+                name="lidar",
+                output="screen",
+                parameters=[{"robotNamespace": "", "topicName": "/lidar"}],
             ),
         ]
     )
